@@ -48,6 +48,7 @@
     }
     .order{
         display: block;
+        color: white;
         margin: 30px auto 0px auto;
         width: 170px;
         height: 40px;
@@ -56,5 +57,9 @@
         border: none;
         font-weight: bold;
         font-size: 14px;
+        cursor: pointer;
+    }
+    .order:hover{
+        background-color: rgb(10, 163, 10);
     }
 }

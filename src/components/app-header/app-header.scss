@@ -12,6 +12,9 @@
         color: #fff;
         text-decoration: none;
     }
+    &__link:hover {
+        color: rgb(27, 143, 33);
+    }
     &__cart {
         width: 20px;
         margin-right: 10px;

@@ -17,13 +17,13 @@ const MenuListItem = ( {menuItem, onAddToCart}) => {
                 <Link to = {`/${menuItem.id}`}>
                     <div className="menu__title">{title}</div>
                     <img className="menu__img" src={url} alt={title}></img>
-                    <div className="menu__category">Category: <span>{category}</span></div>
-                    <div className="menu__price">Price: <span>{price}$</span></div>
+                    <div className="menu__category">Категория: <span>{category}</span></div>
+                    <div className="menu__price">Цена: <span>{price}$</span></div>
                     <button onClick = {(e) => {
                             e.preventDefault();
                             onAddToCart();
                         } } 
-                        className="menu__btn">Add to cart</button>
+                        className="menu__btn">В корзину</button>
                     <span className = {`menu__category_Img ${category}`}></span>
                 </Link>
             </li>

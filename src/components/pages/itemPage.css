@@ -13,6 +13,7 @@
 
 .menu__item{
     position: relative;
+    color: white;
 }
 .menu__category_Img{
     position: absolute;
@@ -25,7 +26,7 @@
     background-size: cover;
     background-repeat: no-repeat;
 }
-.pizza {
+/* .pizza {
     background-image: url('http://www-static.dreambox.com/wp-content/uploads/2015/02/Prize-Icon-Pizza.png');
     width: 70px;
     height: 70px;
@@ -35,4 +36,4 @@
 }
 .meat{
     background-image: url('https://cdn2.iconfinder.com/data/icons/food-drinks-v3/512/Steak-512.png');
-}
+} */

@@ -4,25 +4,29 @@ const initialState = {
     loading: true,
     error: false,
     items: [],
-    totalPrice: 0
+    totalPrice: 0,
+    orderCompleted: false
 }
 
 
 const reducer = (state = initialState, action) => {
+    console.log("Состояние:", state)
     switch (action.type) {
         case 'MENU_LOADED':
             return {
                 ...state,
                 menu: action.payload,
                 loading: false,
-                error: false
+                error: false,
+                orderCompleted: false
             };
         case 'MENU_REQUESTED':
             return {
                 ...state,
                 menu: state.menu,
                 loading: true,
-                error: false
+                error: false,
+                orderCompleted: false
             };
         case 'MENU_ERROR':
             return {
