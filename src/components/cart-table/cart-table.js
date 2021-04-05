@@ -1,14 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {deleteFromCart} from '../../actions';
+import {deleteFromCart, orderCompleted} from '../../actions';
 import WithRestoService from '../hoc';
 
 import './cart-table.scss';
 
-const CartTable = ({items, deleteFromCart, RestoService}) => {
+const CartTable = ({items, deleteFromCart, RestoService, orderCompleted, orderCompletedButton}) => {
     if( items.length === 0){
         return (<div className="cart__title"> Ваша корзина пуста :( </div>)
     }
+    console.log("items:", items)
+    console.log("orderCompletedButton:", orderCompletedButton)
     return (
         <>
             <div className="cart__title">Ваш заказ:</div>
@@ -27,7 +29,16 @@ const CartTable = ({items, deleteFromCart, RestoService}) => {
                 })
             }
             </div>
-            <button onClick = {() => {RestoService.setOrder( generateOrder(items))} } className = "order">Оформить заказ</button>
+
+            {orderCompletedButton === false ?
+            (
+            <button onClick = {() => {
+                                        RestoService.setOrder( generateOrder(items))
+                                        orderCompleted()
+                                    } } className = "order">Оформить заказ</button>
+              
+            ) :
+            <div className="cart__item-finish_order">Ваш заказ сформирован и отправлен менеджеру для сбора! Мы свяжемся с вами в ближайшее время для подтверждения заказа. Если вам не ответили в течение одного часа, напишите нам, пожалуйста, на почту mirbestbooks@booksbest.ru. Для формирования нового заказа обновите страницу.</div>}
         </>
     );
 };
@@ -39,18 +50,27 @@ const generateOrder = (items) => {
             qtty: item.qtty
         }
     })
-    console.log(newOrder)
+    // console.log("Это newOrder:", newOrder)
     return newOrder;
 }
 
-const mapStateToProps = ({items}) => {
+// const mapStateToProps = ({items}, state) => {
+//     return{
+//         items,
+//         orderCompleted1: state.orderCompleted
+//     }
+// };
+
+const mapStateToProps = (state) => {
     return{
-        items 
+        items: state.items,
+        orderCompletedButton: state.orderCompleted
     }
 };
 
 const mapDispatchToProps = {
-    deleteFromCart
+    deleteFromCart,
+    orderCompleted
 }
 
 export default WithRestoService()(connect(mapStateToProps, mapDispatchToProps)(CartTable));

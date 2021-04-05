@@ -17,22 +17,27 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 menu: action.payload,
                 loading: false,
-                error: false,
-                orderCompleted: false
+                error: false
             };
         case 'MENU_REQUESTED':
             return {
                 ...state,
                 menu: state.menu,
                 loading: true,
-                error: false,
-                orderCompleted: false
+                error: false
             };
         case 'MENU_ERROR':
             return {
                 ...state,
                 menu: state.menu,
                 error: true
+            };
+        case 'ORDER_COMPLITED':
+            return {
+                ...state,
+                loading: false,
+                error: false,
+                orderCompleted: true
             };
         case 'ITEM_ADD_TO_CART':
             const id = action.payload;

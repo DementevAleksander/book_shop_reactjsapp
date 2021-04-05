@@ -17,6 +17,12 @@ const menuError = () => {
     }
 }
 
+const orderCompleted = () => {
+    return {
+        type: 'ORDER_COMPLITED',
+    }
+}
+
 const addedToCart = (id) => {
     return {
         type: 'ITEM_ADD_TO_CART',
@@ -36,5 +42,6 @@ export {
     menuRequested,
     menuError, 
     addedToCart, 
-    deleteFromCart
+    deleteFromCart,
+    orderCompleted
 };
