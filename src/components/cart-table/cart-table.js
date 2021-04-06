@@ -5,12 +5,12 @@ import WithRestoService from '../hoc';
 
 import './cart-table.scss';
 
+
 const CartTable = ({items, deleteFromCart, RestoService, orderCompleted, orderCompletedButton}) => {
     if( items.length === 0){
         return (<div className="cart__title"> Ваша корзина пуста :( </div>)
     }
-    console.log("items:", items)
-    console.log("orderCompletedButton:", orderCompletedButton)
+    
     return (
         <>
             <div className="cart__title">Ваш заказ:</div>
@@ -32,11 +32,16 @@ const CartTable = ({items, deleteFromCart, RestoService, orderCompleted, orderCo
 
             {orderCompletedButton === false ?
             (
-            <button onClick = {() => {
-                                        RestoService.setOrder( generateOrder(items))
-                                        orderCompleted()
-                                    } } className = "order">Оформить заказ</button>
-              
+                <form className = "form_wrapper">
+
+                    <span>Введите ваш e-mail:</span>
+                    <input type="email" placeholder="Ваш e-mail для подтверждения заказа..." label="Введите email" required />
+
+                    <button onClick = {() => {
+                                                RestoService.setOrder( generateOrder(items))
+                                                orderCompleted()
+                                            } } className = "order">Оформить заказ</button>
+                </form>
             ) :
             <div className="cart__item-finish_order">Ваш заказ сформирован и отправлен менеджеру для сбора! Мы свяжемся с вами в ближайшее время для подтверждения заказа. Если вам не ответили в течение одного часа, напишите нам, пожалуйста, на почту mirbestbooks@booksbest.ru. Для формирования нового заказа обновите страницу.</div>}
         </>
@@ -50,16 +55,8 @@ const generateOrder = (items) => {
             qtty: item.qtty
         }
     })
-    // console.log("Это newOrder:", newOrder)
     return newOrder;
 }
-
-// const mapStateToProps = ({items}, state) => {
-//     return{
-//         items,
-//         orderCompleted1: state.orderCompleted
-//     }
-// };
 
 const mapStateToProps = (state) => {
     return{

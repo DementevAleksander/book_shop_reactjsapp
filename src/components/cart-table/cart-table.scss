@@ -70,4 +70,36 @@
         padding: 20px;
         text-align: center;
     }
+    .form_wrapper{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-content: stretch;
+        align-items: center;
+        input {
+            height: 25px;
+            margin-top: 4px;
+            width: 300px;
+            border-radius: 4px;
+        }
+        span{
+            color: white;
+            margin-top: 40px;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .cart__list {
+        width: 96%;
+    }
+
+    .cart__item-title, .cart__item-price {
+        font-size: 12px;
+    }
+
+    .cart__close {
+        right: 4px;
+    }
 }

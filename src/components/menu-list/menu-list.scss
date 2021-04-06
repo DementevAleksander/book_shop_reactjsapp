@@ -3,9 +3,17 @@
         min-height: 100vh;
         padding: 35px;
         display: flex;
-        justify-content: flex-start;
-        align-items: flex-start;
+        justify-content: center;
+        align-items: center;
         flex-wrap: wrap;
         margin-left: 34px;
+        padding-top: 70px;
+    }
+}
+
+@media (max-width: 600px) {
+    .menu__list {
+        padding: 4px;
+        padding-top: 70px;
     }
 }
