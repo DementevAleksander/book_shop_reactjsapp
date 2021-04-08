@@ -23,3 +23,6 @@ yarn-debug.log*
 yarn-error.log*
 src/db.json
 src/services/technical.js
+.firebase/
+.firebaserc
+firebase.json
